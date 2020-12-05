@@ -13,11 +13,16 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { PlayerComponent } from './player/player.component';
+import { PlayerListComponent } from './players/player-list/player-list.component';
 import { TeamComponent } from './team/team.component';
 import { TournamentComponent } from './tournament/tournament.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { PlayerCardComponent } from './players/player-card/player-card.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import { appRoutes } from './routes';
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    PlayerComponent,
+    PlayerListComponent,
+    PlayerCardComponent,
     TeamComponent,
     TournamentComponent
   ],
@@ -37,7 +43,7 @@ import { appRoutes } from './routes';
     FormsModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     AuthService,

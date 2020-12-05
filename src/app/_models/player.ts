@@ -3,4 +3,5 @@ export interface Player {
     matchesPlayed: number;
     role: string;
     team: string;
+    birthdate: string;
 }

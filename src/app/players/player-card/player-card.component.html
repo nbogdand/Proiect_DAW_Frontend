@@ -8,6 +8,7 @@
                 <h5 class="card-title">{{player.name}}</h5>
                 <p class="card-text">{{player.team}}</p>
                 <p class="card-text"><small class="text-muted">Position: {{player.role}}</small></p>
+                <p class="card-text"><small class="text-muted">Age: {{ player.birthdate | age }} Birthdate: {{ player.birthdate | dateConverter: '/' }}</small></p>
             </div>
         </div>
     </div>

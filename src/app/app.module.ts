@@ -19,6 +19,8 @@ import { TournamentComponent } from './tournament/tournament.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { PlayerCardComponent } from './players/player-card/player-card.component';
+import { DateConverterPipe } from './_pipes/date-converter.pipe';
+import { AgePipe } from './_pipes/age.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -33,7 +35,10 @@ export function tokenGetter() {
     PlayerListComponent,
     PlayerCardComponent,
     TeamComponent,
-    TournamentComponent
+    TournamentComponent,
+
+    DateConverterPipe,
+    AgePipe,
   ],
   imports: [
     BrowserModule,

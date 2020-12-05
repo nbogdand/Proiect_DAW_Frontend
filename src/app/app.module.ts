@@ -13,18 +13,11 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { PlayerListComponent } from './players/player-list/player-list.component';
 import { TeamComponent } from './team/team.component';
 import { TournamentComponent } from './tournament/tournament.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-import { PlayerCardComponent } from './players/player-card/player-card.component';
-import { DateConverterPipe } from './_pipes/date-converter.pipe';
-import { AgePipe } from './_pipes/age.pipe';
-
-export function tokenGetter() {
-  return localStorage.getItem('token');
-}
+import { PlayerModule } from './_modules/player/player.module';
 
 @NgModule({
   declarations: [
@@ -32,13 +25,8 @@ export function tokenGetter() {
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    PlayerListComponent,
-    PlayerCardComponent,
     TeamComponent,
     TournamentComponent,
-
-    DateConverterPipe,
-    AgePipe,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +37,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    PlayerModule,
   ],
   providers: [
     AuthService,

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from '../../_models/player';
-import { PlayerService } from '../../_services/player.service';
-import { AlertifyService } from '../../_services/alertify.service';
+import { Player } from 'src/app/_modules/player/_models/player';
+import { PlayerService } from 'src/app/_modules/player/_services/player.service';
+import { AlertifyService } from '../../../_services/alertify.service';
 
 @Component({
-  selector: 'app-player',
+  selector: 'app-player-list',
   templateUrl: './player-list.component.html',
   styleUrls: ['./player-list.component.css']
 })

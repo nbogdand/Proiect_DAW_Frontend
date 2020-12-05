@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Player } from 'src/app/_models/player';
+import { Player } from 'src/app/_modules/player/_models/player';
 import { Subject, BehaviorSubject } from 'rxjs';
 
 @Component({

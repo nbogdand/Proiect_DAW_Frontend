@@ -4,29 +4,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from './_services/auth.service';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { TeamComponent } from './team/team.component';
-import { TournamentComponent } from './tournament/tournament.component';
-import { RouterModule } from '@angular/router';
-import { appRoutes } from './routes';
+import { AuthModule } from './_modules/auth/auth.module';
 import { PlayerModule } from './_modules/player/player.module';
+import { RouterModule } from '@angular/router';
+import { TeamModule } from './_modules/team/team.module';
+import { TournamentModule } from './_modules/tournament/tournament.module';
+
+import { NavComponent } from './nav/nav.component';
+import { HomeComponent } from './home/home.component';
+
+import { appRoutes } from './routes';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent,
-    TeamComponent,
-    TournamentComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,12 +35,12 @@ import { PlayerModule } from './_modules/player/player.module';
     FormsModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    
     RouterModule.forRoot(appRoutes),
+    AuthModule,
     PlayerModule,
-  ],
-  providers: [
-    AuthService,
-    ErrorInterceptorProvider
+    TeamModule,
+    TournamentModule,
   ],
   bootstrap: [AppComponent]
 })

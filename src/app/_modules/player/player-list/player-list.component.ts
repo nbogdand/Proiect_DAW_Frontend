@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/app/_modules/player/_models/player';
 import { PlayerService } from 'src/app/_modules/player/_services/player.service';
-import { AlertifyService } from '../../../_services/alertify.service';
+import { AlertifyService } from 'src/app/_modules/shared/shared/services/alertify.service';
 
 @Component({
   selector: 'app-player-list',

@@ -16,8 +16,8 @@ export class AlertifyService {
     });
   }
 
-  success(message: string, onSuccess: () => any) {
-    alertify.success(message, onSuccess);
+  success(message: string) {
+    alertify.success(message);
   }
 
   error (message: string, onError: () => any) {

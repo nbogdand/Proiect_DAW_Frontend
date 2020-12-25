@@ -20,6 +20,10 @@ export class PlayerService {
     return this.http.get<Player[]>(this.url + 'players/');
   }
 
+  getTeamPlayers(teamId: string): Observable<Player[]> {
+    return this.http.get<Player[]>(this.url + 'players/' + teamId);
+  }
+
   getPlayer(id: string): Observable<Player> {
     return this.http.get<Player>(this.url + 'players/' + id);
   }

@@ -13,7 +13,7 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'player', component: PlayerListComponent },
-            { path: 'team', component: TeamComponent },
+            { path: 'team/:id', component: TeamComponent },
             { path: 'tournament', component: TournamentComponent },
         ]
     },

@@ -5,17 +5,20 @@ import { TokenInterceptorProvider } from './interceptors/token.interceptor';
 import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
 import { AlertifyService } from './services/alertify.service';
 import { HighlightDirective } from './directives/highlight.directive';
+import { DateConverterPipe } from './pipes/date-converter.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   exports: [
-    HighlightDirective
+    HighlightDirective,
+    DateConverterPipe
   ],
   declarations: [
     SharedComponent,
-    HighlightDirective
+    HighlightDirective,
+    DateConverterPipe
   ],
   providers: [
     AlertifyService,

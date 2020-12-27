@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <form #playerForm="ngForm" (ngSubmit)="submitChanges()">
+
+        <div class="form-group">
+            <label>Name: </label>
+            <input type="text" name="Name" class="form-control" required [(ngModel)]="player.name" value="{{player.name}}" placeholder="{{player.name}}">
+        </div>
+
+        <div class="form-group">
+            <label>Matches played: </label>
+            <input type="text" name="MatchesPlayed" class="form-control" required [(ngModel)]="player.matchesPlayed" value="{{player.matchesPlayed}}" placeholder="{{player.matchesPlayed}}">
+        </div>
+
+        <div class="form-group">
+            <label>Role: </label>
+            <input type="text" name="Role" class="form-control" required [(ngModel)]="player.role" value="{{player.role}}" placeholder="{{player.role}}">
+        </div>
+
+        <div class="form-group">
+            <label>Birthdate: {{ player.birthdate | dateConverter: '/' }}</label><br>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [formControl]="initialDate" [(ngModel)]="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group text-center">
+            <button class="btn btn-success" type="submit">Update</button>
+            <button class="btn btn-default" type="button" (click)="onGoBack()">Go back</button>
+        </div>
+
+    </form>
+
+</div>

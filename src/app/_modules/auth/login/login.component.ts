@@ -5,6 +5,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Router } from '@angular/router';
 import { AuthState } from '../_models/auth.state';
 
+declare var FB: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

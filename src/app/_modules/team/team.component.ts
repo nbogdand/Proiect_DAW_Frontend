@@ -29,15 +29,24 @@ export class TeamComponent implements OnInit {
   }
 
   getTeamPlayers() {
-    this.playerService.getTeamPlayers(this.activatedRoute.snapshot.params.id).subscribe((players: Player[]) => {
-      this.players = players
-    }, error => {
-      this.alertifyService.error(error, () => { })
-    })
+    this.playerService
+      .getTeamPlayers(this.activatedRoute.snapshot.params.id)
+      .subscribe((players: Player[]) => {
+        this.players = players
+      }, error => {
+        this.alertifyService.error(error, () => { })
+      })
   }
 
   onAddPlayer() {
-    this.router.navigate(['/player/add'])
+    this.router.navigate(
+      ['/player/add'], {
+      state: {
+        data: {
+          teamId: this.activatedRoute.snapshot.params.id
+        }
+      }
+    });
   }
 
   onEdit(id: string) {

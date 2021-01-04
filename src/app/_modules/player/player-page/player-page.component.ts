@@ -3,10 +3,9 @@ import { AlertifyService } from '../../shared/shared/services/alertify.service';
 import { PlayerService } from '../_services/player.service';
 import { ActivatedRoute } from '@angular/router';
 import { Player } from '../_models/player';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Location } from '@angular/common';
 
-enum PageState {
+export enum PageState {
   PLAYER_UPDATE,
   PLAYER_ADD
 }
@@ -19,9 +18,7 @@ enum PageState {
 export class PlayerPageComponent implements OnInit {
 
   player: any = {};
-  model: NgbDateStruct = { year: 0, month: 0, day: 0};
-  date: any = {}
-  initialDate: any = {}
+  date: any = {};
   pageState: PageState = PageState.PLAYER_UPDATE;
 
   constructor(
@@ -32,11 +29,12 @@ export class PlayerPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getPageState();
     this.getPlayer();
   }
 
   getPageState() {
-    if (this.activatedRoute.snapshot.params.id == 'add'){
+    if (this.activatedRoute.snapshot.params.id === 'add') {
       this.pageState = PageState.PLAYER_ADD;
     } else {
       this.pageState = PageState.PLAYER_UPDATE;
@@ -44,12 +42,12 @@ export class PlayerPageComponent implements OnInit {
   }
 
   getPlayer() {
-    if (this.pageState == PageState.PLAYER_ADD) return
+    if (this.pageState == PageState.PLAYER_ADD) {
+      return;
+    }
 
     this.playerService.getPlayer(this.activatedRoute.snapshot.params.id).subscribe((player: Player) => {
       this.player = player;
-      this.date = "21/10/1998";
-      this.initialDate = Date.parse(player.birthdate);
     }, error => {
       this.alertify.error(error, () => { });
     })
@@ -57,15 +55,45 @@ export class PlayerPageComponent implements OnInit {
 
   submitChanges() {
     console.log(this.player);
-    console.log(Date.parse(this.date));
 
+    switch (this.pageState) {
+      case PageState.PLAYER_ADD: {
+        this.addPlayer();
+        break;
+      }
+      case PageState.PLAYER_UPDATE: {
+        this.updatePlayer();
+        break;
+      }
+    }
+  }
+
+  addPlayer() {
+    console.log("addPlayer()", history.state.data);
+    this.playerService.addPlayer(this.player, history.state.data.teamId)
+      .subscribe((player: Player) => {
+        this.alertify.success("Player Added");
+        this.onGoBack();
+      }, (error) => {
+        this.alertify.error(error, () => { });
+      })
+  }
+
+  updatePlayer() {
     this.playerService.updatePlayer(this.player).subscribe((player: Player) => {
       console.log(player);
       this.alertify.success("Player Updated");
       this.onGoBack();
     }, (error) => {
-      this.alertify.error(error, () => {});
+      this.alertify.error(error, () => { });
     })
+  }
+
+  updateDate(dateObject: any) {
+    const stringified = JSON.stringify(dateObject.value);
+    const dob = stringified.substring(1, 11);
+    console.log(new Date(dob).getTime());
+    this.player.birthdate = new Date(dob).getTime() / 1000;
   }
 
   onGoBack() {

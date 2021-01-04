@@ -6,6 +6,7 @@ import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
 import { AlertifyService } from './services/alertify.service';
 import { HighlightDirective } from './directives/highlight.directive';
 import { DateConverterPipe } from './pipes/date-converter.pipe';
+import { MessagingService } from './services/messaging.service';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { DateConverterPipe } from './pipes/date-converter.pipe';
   ],
   providers: [
     AlertifyService,
+    MessagingService,
 
     TokenInterceptorProvider,
     ErrorInterceptorProvider

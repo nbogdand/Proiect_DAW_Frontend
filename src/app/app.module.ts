@@ -20,6 +20,8 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 
 import { appRoutes } from './routes';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { appRoutes } from './routes';
     FormsModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     
     RouterModule.forRoot(appRoutes),
     AuthModule,

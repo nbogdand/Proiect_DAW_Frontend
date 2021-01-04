@@ -22,6 +22,7 @@ export class AuthService {
           const user = response;
           if (user) {
             localStorage.setItem('token', user.token);
+            localStorage.setItem('userId', user.id);
           }
         })
       );

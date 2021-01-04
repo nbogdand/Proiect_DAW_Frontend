@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:44340/api/'
+  apiUrl: 'https://localhost:44340/api/',
+  firebaseConfig: {
+    apiKey: "AIzaSyCW43k14ASz_iJlJr6byCEvh7TDuvwn5IA",
+    authDomain: "basketball-season.firebaseapp.com",
+    projectId: "basketball-season",
+    storageBucket: "basketball-season.appspot.com",
+    messagingSenderId: "580943499315",
+    appId: "1:580943499315:web:0a1f287b0acf92a9eb1346"
+  }
 };
 
 /*

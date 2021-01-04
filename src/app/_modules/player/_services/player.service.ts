@@ -29,6 +29,16 @@ export class PlayerService {
     return this.http.get<Player>(this.url + 'players/' + id);
   }
 
+  addPlayer(player: Player, teamId: string) {
+    return this.http.post<Player>(this.url + 'players', {
+      name: player.name,
+      matchesPlayed: player.matchesPlayed,
+      role: player.role,
+      birthdate: player.birthdate,
+      teamId: teamId
+    });
+  }
+
   updatePlayer(player: Player) {
     return this.http.put<Player>(this.url + 'players', player);
   }

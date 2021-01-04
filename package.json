@@ -26,6 +26,7 @@
         "@auth0/angular-jwt": "^5.0.2",
         "@ng-bootstrap/ng-bootstrap": "^8.0.0",
         "alertifyjs": "^1.13.1",
+        "angularx-social-login": "^3.5.4",
         "bootstrap": "^4.5.3",
         "jquery": "^3.5.1",
         "ngx-bootstrap": "^6.2.0",

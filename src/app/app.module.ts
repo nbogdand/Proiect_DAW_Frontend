@@ -4,41 +4,30 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from './_services/auth.service';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { PlayerListComponent } from './players/player-list/player-list.component';
-import { TeamComponent } from './team/team.component';
-import { TournamentComponent } from './tournament/tournament.component';
+import { AuthModule } from './_modules/auth/auth.module';
+import { PlayerModule } from './_modules/player/player.module';
 import { RouterModule } from '@angular/router';
-import { appRoutes } from './routes';
-import { PlayerCardComponent } from './players/player-card/player-card.component';
-import { DateConverterPipe } from './_pipes/date-converter.pipe';
-import { AgePipe } from './_pipes/age.pipe';
+import { TeamModule } from './_modules/team/team.module';
+import { TournamentModule } from './_modules/tournament/tournament.module';
 
-export function tokenGetter() {
-  return localStorage.getItem('token');
-}
+import { NavComponent } from './nav/nav.component';
+import { HomeComponent } from './home/home.component';
+
+import { appRoutes } from './routes';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent,
-    PlayerListComponent,
-    PlayerCardComponent,
-    TeamComponent,
-    TournamentComponent,
-
-    DateConverterPipe,
-    AgePipe,
   ],
   imports: [
     BrowserModule,
@@ -48,11 +37,13 @@ export function tokenGetter() {
     FormsModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    
     RouterModule.forRoot(appRoutes),
-  ],
-  providers: [
-    AuthService,
-    ErrorInterceptorProvider
+    AuthModule,
+    PlayerModule,
+    TeamModule,
+    TournamentModule,
   ],
   bootstrap: [AppComponent]
 })
